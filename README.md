@@ -1,16 +1,20 @@
 # budget-app
 
-Application React + Vite de suivi de budget personnel pour plusieurs comptes CAD/EUR, avec persistance en `localStorage` et déploiement sur GitHub Pages.
+Base React + Vite simplifiée pour repartir de zéro et reconstruire l’application ensemble.
 
-## Lancer localement
+## Objectif
+
+L’ancienne interface a été retirée pour remettre une base minimale, stable et facile à faire évoluer.
+
+## Lancer le projet
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Déploiement GitHub Pages
+## Build de production
 
-- `vite.config.js` utilise `base: '/bankapp/'` pour le dépôt GitHub Pages.
-- Le workflow `.github/workflows/deploy.yml` construit l'application à chaque push sur `main` puis publie `dist/` sur la branche `gh-pages`.
-- Dans GitHub → **Settings** → **Actions** → **General**, activez **Read and write permissions** pour permettre le déploiement.
+```bash
+npm run build
+```
