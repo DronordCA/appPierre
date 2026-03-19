@@ -1,6 +1,17 @@
 # budget-app
 
-Application React + Vite de suivi de budget personnel pour plusieurs comptes CAD/EUR, avec persistance en `localStorage` et déploiement sur GitHub Pages.
+Application React + Vite de suivi de budget personnel pour plusieurs comptes CAD/EUR, avec persistance en `localStorage`.
+
+## Pourquoi l'écran blanc arrivait
+
+L'application utilisait une base Vite figée sur `/appPierre/`. Dès que le site était servi depuis une autre URL (racine, aperçu local, autre hébergeur, etc.), les fichiers JS/CSS étaient cherchés au mauvais endroit, ce qui produisait un écran blanc.
+
+La configuration utilise maintenant `base: './'` pour charger les assets de manière relative et fonctionner aussi bien :
+
+- en local avec `npm run dev`
+- en build statique avec `npm run build`
+- sur GitHub Pages
+- sur un autre hébergement statique
 
 ## Lancer localement
 
@@ -9,8 +20,8 @@ npm install
 npm run dev
 ```
 
-## Déploiement GitHub Pages
+## Construire la version de production
 
-- `vite.config.js` utilise `base: '/bankapp/'` pour le dépôt GitHub Pages.
-- Le workflow `.github/workflows/deploy.yml` construit l'application à chaque push sur `main` puis publie `dist/` sur la branche `gh-pages`.
-- Dans GitHub → **Settings** → **Actions** → **General**, activez **Read and write permissions** pour permettre le déploiement.
+```bash
+npm run build
+```
